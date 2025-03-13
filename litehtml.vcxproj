@@ -104,6 +104,9 @@
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
     </Lib>
+    <PostBuildEvent>
+      <Command>echo F | xcopy /y $(SolutionDir)\build\$(Platform)\$(Configuration)\$(ProjectName).dll $(SolutionDir)..\Assets\Dlls\$(ProjectName).dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -126,6 +129,9 @@
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
     </Lib>
+    <PostBuildEvent>
+      <Command>echo F | xcopy /y $(SolutionDir)\build\$(Platform)\$(Configuration)\$(ProjectName).dll $(SolutionDir)..\Assets\Dlls\$(ProjectName).dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -146,6 +152,9 @@
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
     </Lib>
+    <PostBuildEvent>
+      <Command>echo F | xcopy /y $(SolutionDir)\build\$(Platform)\$(Configuration)\$(ProjectName).dll $(SolutionDir)..\Assets\Dlls\$(ProjectName).dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -169,6 +178,9 @@
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
     </Lib>
+    <PostBuildEvent>
+      <Command>echo F | xcopy /y $(SolutionDir)\build\$(Platform)\$(Configuration)\$(ProjectName).dll $(SolutionDir)..\Assets\Dlls\$(ProjectName).dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\background.cpp" />
@@ -300,6 +312,7 @@
     <ClCompile Include="src\web_color.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\dllmain.h" />
     <ClInclude Include="include\litehtml\background.h" />
     <ClInclude Include="include\litehtml\borders.h" />
     <ClInclude Include="include\litehtml\box.h" />

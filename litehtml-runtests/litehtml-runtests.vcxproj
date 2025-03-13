@@ -169,6 +169,9 @@
   <ItemGroup>
     <None Include="Ex1.css" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\litehtml\dllmain.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

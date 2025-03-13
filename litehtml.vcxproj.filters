@@ -451,5 +451,8 @@
     <ClInclude Include="include\litehtml\html_microsyntaxes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\dllmain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
