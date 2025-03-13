@@ -259,6 +259,8 @@ extern "C"
 
         ContextDictionary[stdname].FontList.clear();
         LiteHTMLMutex.unlock();
+
+        return 1;
     }
 
     __declspec(dllexport) int AddFontToContext(const char* contextname, const char* font)
@@ -274,6 +276,8 @@ extern "C"
 
         ContextDictionary[stdname].FontList.push_back(std::string(font));
         LiteHTMLMutex.unlock();
+
+        return 1;
     }
 
     __declspec(dllexport) int GenerateDrawCalls(const char* contextname, const char *page, const char* css, int width, int height, int clipx, int clipy, int clipwidth, int clipheight) 
