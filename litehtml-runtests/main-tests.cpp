@@ -42,7 +42,7 @@ int main()
                 break;
             }
 
-            printf("%s\n", drawcallptr->Text.c_str());
+            printf("%s\n", drawcallptr->Text);
         }
 
 		DeleteLiteHTMLContext("DefaultContext");

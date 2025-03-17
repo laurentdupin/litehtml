@@ -10,6 +10,8 @@ struct LiteHTMLContextData
 {
     std::vector<std::string> FontList;
     std::unique_ptr<std::vector<LiteHTMLDrawCall>> DrawCalls = std::make_unique<std::vector<LiteHTMLDrawCall>>();
+    std::vector<std::unique_ptr<std::string>> Strings;
+    litehtml::document::ptr Document;
 };
 
 static std::unordered_map<std::string, LiteHTMLContextData> ContextDictionary;
@@ -62,9 +64,13 @@ public:
     virtual void draw_text(litehtml::uint_ptr hdc, const char* text, litehtml::uint_ptr hFont, litehtml::web_color color, const litehtml::position& pos)
     {
         LiteHTMLMutex.lock();
+
         auto &drawcall = ContextDictionary[ContextName].DrawCalls->emplace_back();
         drawcall.DrawCallType = LiteHTMLDrawCallType::TEXT;
-        drawcall.Text = text;
+
+		auto &laststring = ContextDictionary[ContextName].Strings.emplace_back(std::make_unique<std::string>(text));
+		drawcall.Text = laststring->c_str();
+
         LiteHTMLMutex.unlock();
     }
     
@@ -292,6 +298,8 @@ extern "C"
         }
 
         ContextDictionary[stdname].DrawCalls->clear();
+		ContextDictionary[stdname].Strings.clear();
+
         LiteHTMLMutex.unlock();
 
         DocumentContainer container(stdname, width, height);
